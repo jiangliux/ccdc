@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{gu2010discriminative}
+C.~Gu and X.~Ren, ``Discriminative mixture-of-templates for viewpoint
+  classification,'' {\em Computer Vision--ECCV 2010}, pp.~408--421, 2010.
+
+\bibitem{fidler20123d}
+S.~Fidler, S.~Dickinson, and R.~Urtasun, ``3d object detection and viewpoint
+  estimation with a deformable 3d cuboid model,'' in {\em Advances in neural
+  information processing systems}, pp.~611--619, 2012.
+
+\bibitem{felzenszwalb2010object}
+P.~F. Felzenszwalb, R.~B. Girshick, D.~McAllester, and D.~Ramanan, ``Object
+  detection with discriminatively trained part-based models,'' {\em IEEE
+  transactions on pattern analysis and machine intelligence}, vol.~32, no.~9,
+  pp.~1627--1645, 2010.
+
+\bibitem{silberman2012indoor}
+N.~Silberman, D.~Hoiem, P.~Kohli, and R.~Fergus, ``Indoor segmentation and
+  support inference from rgbd images,'' {\em Computer Vision--ECCV 2012},
+  pp.~746--760, 2012.
+
+\bibitem{janoch2013category}
+A.~Janoch, S.~Karayev, Y.~Jia, J.~T. Barron, M.~Fritz, K.~Saenko, and
+  T.~Darrell, ``A category-level 3d object dataset: Putting the kinect to
+  work,'' in {\em Consumer Depth Cameras for Computer Vision}, pp.~141--165,
+  Springer, 2013.
+
+\bibitem{song2015sun}
+S.~Song, S.~P. Lichtenberg, and J.~Xiao, ``Sun rgb-d: A rgb-d scene
+  understanding benchmark suite,'' in {\em Proceedings of the IEEE conference
+  on computer vision and pattern recognition}, pp.~567--576, 2015.
+
+\bibitem{song2014sliding}
+S.~Song and J.~Xiao, ``Sliding shapes for 3d object detection in depth
+  images,'' in {\em European conference on computer vision}, pp.~634--651,
+  Springer, 2014.
+
+\bibitem{ren2016three}
+Z.~Ren and E.~B. Sudderth, ``Three-dimensional object detection and layout
+  prediction using clouds of oriented gradients,'' in {\em Proceedings of the
+  IEEE Conference on Computer Vision and Pattern Recognition}, pp.~1525--1533,
+  2016.
+
+\bibitem{dalal2005histograms}
+N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
+  detection,'' in {\em Computer Vision and Pattern Recognition, 2005. CVPR
+  2005. IEEE Computer Society Conference on}, vol.~1, pp.~886--893, IEEE, 2005.
+
+\bibitem{aubry2014seeing}
+M.~Aubry, D.~Maturana, A.~A. Efros, B.~C. Russell, and J.~Sivic, ``Seeing 3d
+  chairs: exemplar part-based 2d-3d alignment using a large dataset of cad
+  models,'' in {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pp.~3762--3769, 2014.
+
+\bibitem{buch20093d}
+N.~Buch, J.~Orwell, and S.~A. Velastin, ``3d extended histogram of oriented
+  gradients (3dhog) for classification of road users in urban scenes,'' 2009.
+
+\bibitem{uijlings2013selective}
+J.~R. Uijlings, K.~E. Van De~Sande, T.~Gevers, and A.~W. Smeulders, ``Selective
+  search for object recognition,'' {\em International journal of computer
+  vision}, vol.~104, no.~2, pp.~154--171, 2013.
+
+\bibitem{felzenszwalb2004efficient}
+P.~F. Felzenszwalb and D.~P. Huttenlocher, ``Efficient graph-based image
+  segmentation,'' {\em International journal of computer vision}, vol.~59,
+  no.~2, pp.~167--181, 2004.
+
+\end{thebibliography}
