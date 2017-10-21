@@ -44,10 +44,10 @@ third, ;
 \subsection{3D Feature}
 The histogram of oriented gradient (HOG) descriptor \cite{dalal2005histograms} is widely used in object detection. Basiclly, it counts occurrences of gradient orientation in localized portions of an image, and its performance is good enough for 2D detection.  However, since gradient orientations are determined by 3D object orientation and perspective projection, HOG descriptors that are naively extracted in 2D image coordinates is not suitable for 3D object description.\\
 To handle this issue, many work has been done. some used extra CAD model to describe the edge from various viewpoints\cite{aubry2014seeing}.Other assumed that object in sepecific views are near-planar\cite{fidler20123d}. previous extensions of the HOG descriptor  to 3D space require full mesh model\cite{buch20093d}. The cloud of oriented gradient(COG) feature, without all these assumption, accurately model the 3D apperence of objects.\\
-Like HOG , the calculation of COG can be divided into 3 step: Gradient computation, 3D orientation bin construction and normalization. In the first step, we computer the gradient of the image by applying filters [-1, 0, 1], [-1,0,1]$^\mathrm{T}$ to RGB channels. gradient in position (x,y) is obtained by setting  maximum responses across
-color channels to (dx,dy), with corresponding magnitude sqrt(dx2+dy2).
-Then, cuboid contains the object is devided it into 6*6*6 voxels, and 9 orientation bins are constructed for each voxel to model the distribution of local 3D gradient orientation. Perspective projection is used to find corresponding 2D bin boundaries. For each point lies in a voxel, its projected gradient magnitude is sumed into corresponding 2D orientation bin, which is back-projected into 3D bin. Last, bilinearly interpolation is performed between neighboring bins.
-To normalize the histogram for voxel l in cuboid,...So the dimension of COG feature is a fixed size of 1944.
+Like HOG , the calculation of COG can be divided into 3 step: Gradient computation, 3D orientation bin construction and normalization. In the first step, gradient of the image is computed by applying filters [-1,0,1], [-1,0,1]$^\mathrm{T}$ to RGB channels. Gradient in position $(x,y)$ is obtained by setting  maximum responses across
+color channels to $(dx,dy)$, with corresponding magnitude $\sqrt{(dx^2+dy^2)}$.
+Then, cuboid contains the object is devided it into $6\times6\times6$ voxels, and 9 orientation bins are constructed for each voxel to model the distribution of local 3D gradient orientation. Perspective projection is used to find corresponding 2D bin boundaries. For each point lies in a voxel, its projected gradient magnitude is sumed into corresponding 2D orientation bin, which is back-projected into 3D bin. Last, bilinearly interpolation is performed between neighboring bins.
+ Histogram $\phi_{il}^c$for voxel $l$ in cuboid $i$ is normalized by setting $\phi_{il}^c \leftarrow \phi_{il}^c / \sqrt{\|\phi_{il}^c \|^2+ \epsilon}$ for a small $\epsilon>0$, so the dimension of COG feature is a fixed size of $6^3\times9=1944$.
 
 \subsection{3D Search}
 Search algorithm define the hypothesis space for potention object location in testing image. Sliding window method is widely used in 2D detection algorithm\cite{dalal2005histograms,felzenszwalb2010object} and the core idea is intuitive.  An exhaustive search with predefined step is performed where all the location within the image is scanned to not miss any potential object location. Scale is considered by examined different size of image patch at that location. However, searching all the possible location is computationally expensive. Selective search is proposed for fast computation with high recall\cite{uijlings2013selective}. First, initial regions is obtained by performing fast segmentation\cite{felzenszwalb2004efficient}. Later, the most similar neighbouring region pair is merged into a new region and add to the set in every iteration. Finally, object location boxes are extracted from all regions in the set.\\
@@ -62,7 +62,14 @@ $s_{volume}(r_i,r_j)=1-\frac{volume(r_i)+volume(r_j)}{volume(room)}$, where $vol
 \item
 $s_{fill}(r_i,r_j)=1-\frac{volume(r_i)+volume(r_j)}{volume(r_i \cup r_j)}$ describe how well region $r_i$ and $r_j$ fit into each other.
 \end{itemize}
+The weighted sum of these four terms form the final output of similarity measuremenmt. Since both 3D and color cues are combined,
+this very strong baseline achieves an average recall 74.2\%.
 \section{PIPELINE}
+During trainning(Sec. \ref{Train}), we learn a struct svm for each class, each of which is trained with RGBD image without the extra information of CG model. During testing(Sec. \ref{Test}), we used learned structured SVMs to classify candidate cuboids produced by improved 3D Selective Search method, and output 3D bounding boxes with detection scores. we combine COG with geometry features.
+\subsection{Trainning}
+\label{Train}
+\subsection{Testing}
+\label{Test}
 \section{EVALUATION}
 \section{CONCULUSION}
 %\subsection{Instructions for Authors}
