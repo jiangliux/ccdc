@@ -31,14 +31,13 @@ Foundation under Grant ********.}
 \section{INTRODUCTION}
 
 %Object detection has received considerable attention recently. It consists of two key tasks: (\romannumeral1) object categorization which determines if any instance of the categories of interest presents in a given image, and (\romannumeral2) object localization which estimates the positions and extents of detected objects.
-3D object detection has received considerable attention recently for the wide range of applications in autonomous driving and personal robotics.[] Traditional detection method only localize objects in 2D bounding boxes, missing the information of 3D location, orientation and 3D extent. In contrast, 3D object detection provide accurate 3D information to understand real world, thus plays an important role in morden computer vision.\\
+3D object detection has received considerable attention recently for the wide range of applications in autonomous driving and personal robotics\cite{xiang2014beyond}. Traditional detection method only localize objects in 2D bounding boxes, missing the information of 3D location, orientation and 3D extent. In contrast, 3D object detection provide accurate 3D information to understand real world, thus plays an important role in morden computer vision.\\
 It is difficult to solve this task in RGB image due to its natrual ambiguity of missing depth. The most common approach is to discretize the viewing sphere into bins and train a 2D detector for each viewpoint \cite{gu2010discriminative}. However, only weak 3D information can be obtained in these methods. Besides, object-centerd methods establishes spatial connections betwee views by mapping them directly to the surface of 3D model. Though these types of models seems attractive for the continuous viewpoint represantations, their detection performance has typically been inferior to 2D deformable models. More recently, \cite{fidler20123d} extend 2D deformable part-based models(DPMs)\cite{felzenszwalb2010object} to 3D space by means of a deformable 3D cuboid.\\
 With the the availability of inexpensive RGB-D sensors, such as Microsoft Kinect, Apple PrimeSense, Intel RealSense, and Google Project Tango, larger and more ambitious RGBD datasets are created which enabled major breakthroughs for highlevel scene understanding\cite{silberman2012indoor,janoch2013category}. SUN RGB-D dataset\cite{song2015sun}, which contains 10,335 RGB-D images with dense annotations in 3D, has become a de-facto standard for scene understanding.\\
 It is important to exploit the depth information to advance 3D object detection. Sliding Shapes\cite{song2014sliding} was proposed to slide a 3D detection window in 3D space, detect objects by matching to CAD models in “sliding” locations. While CAD models can potentially provide abundant information, the number of models for all categories is limited, and thus this method focused only on a small number of categories. Ren\cite{ren2016three} proposed the Clouds of Oriented Gradients(COG) feature that links the 2D appearance and 3D pose of object categories. COG accurately describes the 3D appearance of objects with complex 3D geometry.\\
-Our contribution are three folds:
-first, ;
-second, ; 
-third, ;
+Our contribution are two folds:
+first, Instead of scanning every possible location and orientation in 3D space, we use rectified 3D Selective Search to dramaticlly speed up the testing process with a relative high recall. 
+second, object pruning is uesed to reduce candidate object hypothesis in testing stage, thus reduce testing time as well as false positive detection.
 \section{Related Work}
 
 \subsection{3D Feature}
@@ -65,7 +64,7 @@ $s_{fill}(r_i,r_j)=1-\frac{volume(r_i)+volume(r_j)}{volume(r_i \cup r_j)}$ descr
 The weighted sum of these four terms form the final output of similarity measuremenmt. Since both 3D and color cues are combined,
 this very strong baseline achieves an average recall 74.2\%.
 \section{PIPELINE}
-During trainning(Sec. \ref{Train}), we learn a struct svm for each class, each of which is trained with RGBD image without the extra information of CG model. During testing(Sec. \ref{Test}), we used learned structured SVMs to classify candidate cuboids produced by improved 3D Selective Search method, and output 3D bounding boxes with detection scores. we combine COG with geometry features.
+During trainning(Sec. \ref{Train}), we learn a structred svm for each class with COG combined with geometry features, without the extra information of CG model. During testing(Sec. \ref{Test}), we use learned structured SVMs to classify candidate cuboids produced by improved 3D Selective Search method, and output 3D bounding boxes with detection scores.
 \subsection{Trainning}
 \label{Train}
 \subsection{Testing}
@@ -187,11 +186,11 @@ During trainning(Sec. \ref{Train}), we learn a struct svm for each class, each o
 %
 %Mathematical formulas should be roughly centered and have to be numbered
 %as formula~(\ref{eq1}).
-\begin{equation}
-  \label{eq1}
-  \lambda_{1,2} = 0.5 \left[\, c_{11} + c_{12}
-            \sqrt{(c_{11} + c_{12})^2 + 4 c_{12} c_{21}} \,\right]
-\end{equation}
+%\begin{equation}
+%  \label{eq1}
+%  \lambda_{1,2} = 0.5 \left[\, c_{11} + c_{12}
+%            \sqrt{(c_{11} + c_{12})^2 + 4 c_{12} c_{21}} \,\right]
+%\end{equation}
 %
 %\subsection{References}
 %
