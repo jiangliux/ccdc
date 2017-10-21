@@ -51,7 +51,17 @@ To normalize the histogram for voxel l in cuboid,...So the dimension of COG feat
 
 \subsection{3D Search}
 Search algorithm define the hypothesis space for potention object location in testing image. Sliding window method is widely used in 2D detection algorithm\cite{dalal2005histograms,felzenszwalb2010object} and the core idea is intuitive.  An exhaustive search with predefined step is performed where all the location within the image is scanned to not miss any potential object location. Scale is considered by examined different size of image patch at that location. However, searching all the possible location is computationally expensive. Selective search is proposed for fast computation with high recall\cite{uijlings2013selective}. First, initial regions is obtained by performing fast segmentation\cite{felzenszwalb2004efficient}. Later, the most similar neighbouring region pair is merged into a new region and add to the set in every iteration. Finally, object location boxes are extracted from all regions in the set.\\
-The current search methods in 3D naively generlized from 2D. Sliding shape train an Exemplar-SVM on a CG model rendered at a specific 3D location relative to the virtual camera, then perform exhaust search only at the nearby location of the CG model in order to improve the speed.
+The current search methods in 3D naively generlized from 2D. Sliding shape\cite{song2014sliding} train an Exemplar-SVM on a CG model rendered at a specific 3D location relative to the virtual camera, then perform exhaust search only at the nearby location of the CG model in order to improve the speed. This 3D local search approach results a relative low recall rate. In \cite{ren2016three}, 3D space is discritized into grids. The at each possible location, certain size of bounding boxes which based on the empirical statistics of trainning bounding boxes, along with 16 candidate orientation are examined. This strategy brings a high recall rate but introduce many false positive detection.\\
+3D selective search(3D SS) is first  proposed in \cite{kanezaki20153d}. But it finally outputs candidate bounding boxes in 2D image. \cite{song2016deep} rectified this method and output 3D bounding boxes. First, RANSAC is used to fit the pane of 3D point cloud to obtain an initial segmentation. For each plane that its projection covers more than 10\% of the total image area,
+RGB-D UCM segmentation from \cite{gupta2014learning}(with threshold 0.2) is used for further splitting. Then starting with this oversegmentation, different segmentation regions are hierarchically grouped, with the following similarity measures:
+\begin{itemize}
+\item $s_{color}(r_i,r_j)$ is the measurment of color similarity between region $r_i$ and $r_j$ using RGB color histogram intersection.
+\item $s_{\#pixels}(r_i,r_j)=1-\frac{\#pixels(r_i)+\#pixels(r_j)}{\#pixels(im)}$, where $\#pixels(\cdot)$ is number of pixels in this region.
+\item
+$s_{volume}(r_i,r_j)=1-\frac{volume(r_i)+volume(r_j)}{volume(room)}$, where $volume(\cdot)$ is the volume of 3D bounding boxes of the points in this region.
+\item
+$s_{fill}(r_i,r_j)=1-\frac{volume(r_i)+volume(r_j)}{volume(r_i \cup r_j)}$ describe how well region $r_i$ and $r_j$ fit into each other.
+\end{itemize}
 \section{PIPELINE}
 \section{EVALUATION}
 \section{CONCULUSION}

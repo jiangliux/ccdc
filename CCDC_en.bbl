@@ -67,4 +67,19 @@ P.~F. Felzenszwalb and D.~P. Huttenlocher, ``Efficient graph-based image
   segmentation,'' {\em International journal of computer vision}, vol.~59,
   no.~2, pp.~167--181, 2004.
 
+\bibitem{kanezaki20153d}
+A.~Kanezaki and T.~Harada, ``3d selective search for obtaining object
+  candidates,'' in {\em Intelligent Robots and Systems (IROS), 2015 IEEE/RSJ
+  International Conference on}, pp.~82--87, IEEE, 2015.
+
+\bibitem{song2016deep}
+S.~Song and J.~Xiao, ``Deep sliding shapes for amodal 3d object detection in
+  rgb-d images,'' in {\em Proceedings of the IEEE Conference on Computer Vision
+  and Pattern Recognition}, pp.~808--816, 2016.
+
+\bibitem{gupta2014learning}
+S.~Gupta, R.~Girshick, P.~Arbel{\'a}ez, and J.~Malik, ``Learning rich features
+  from rgb-d images for object detection and segmentation,'' in {\em European
+  Conference on Computer Vision}, pp.~345--360, Springer, 2014.
+
 \end{thebibliography}
