@@ -8,45 +8,45 @@ Repeated entry---line 177 of file pol.bib
  :                                ,
 I'm skipping whatever remains of this entry
 Warning--empty journal in buch20093d
-You've used 17 entries,
+You've used 18 entries,
             1876 wiz_defined-function locations,
-            572 strings with 6720 characters,
-and the built_in function-call counts, 5949 in all, are:
-= -- 605
-> -- 196
+            578 strings with 6863 characters,
+and the built_in function-call counts, 6256 in all, are:
+= -- 638
+> -- 207
 < -- 0
-+ -- 71
-- -- 54
-* -- 399
-:= -- 770
-add.period$ -- 17
-call.type$ -- 17
-change.case$ -- 17
++ -- 75
+- -- 57
+* -- 423
+:= -- 813
+add.period$ -- 18
+call.type$ -- 18
+change.case$ -- 18
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 325
-empty$ -- 580
-format.name$ -- 54
-if$ -- 1473
+cite$ -- 19
+duplicate$ -- 340
+empty$ -- 607
+format.name$ -- 57
+if$ -- 1548
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 17
-newline$ -- 54
-num.names$ -- 17
-pop$ -- 84
+int.to.str$ -- 18
+missing$ -- 18
+newline$ -- 57
+num.names$ -- 18
+pop$ -- 85
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 246
+skip$ -- 257
 stack$ -- 0
-substring$ -- 520
-swap$ -- 146
+substring$ -- 544
+swap$ -- 153
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 65
-width$ -- 19
-write$ -- 166
+while$ -- 69
+width$ -- 20
+write$ -- 177
 (There was 1 error message)

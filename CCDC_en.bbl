@@ -87,4 +87,8 @@ S.~Gupta, R.~Girshick, P.~Arbel{\'a}ez, and J.~Malik, ``Learning rich features
   from rgb-d images for object detection and segmentation,'' in {\em European
   Conference on Computer Vision}, pp.~345--360, Springer, 2014.
 
+\bibitem{joachims2009cutting}
+T.~Joachims, T.~Finley, and C.-N.~J. Yu, ``Cutting-plane training of structural
+  svms,'' {\em Machine Learning}, vol.~77, no.~1, pp.~27--59, 2009.
+
 \end{thebibliography}
